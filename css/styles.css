@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    overflow: hidden;
+}
+
+.screen {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    overflow: hidden;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#mainMenu {
+    position: relative;
+    background-image: url('../assets/images/submundo.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.screen.active {
+    display: flex;
+    flex-direction: row; /* Revertido para row */
+    justify-content: center;
+    align-items: center;
+}
+
+#mainMenu.active {
+    flex-direction: column; /* Específico para o menu */
+}
+
+#mainMenu h1 {
+    font-size: 5rem;
+    color: #00ffde;
+    text-shadow: 0 0 10px #00ffde, 0 0 20px #00ffde, 0 0 30px #00ffde;
+    margin-bottom: 2rem;
+}
+
+.menu-button,
+#backToMenuButton {
+    background: rgba(224, 77, 255, 0.2);
+    border: 1px solid #e04dff;
+    color: #e04dff;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+}
+
+.menu-button:hover,
+#backToMenuButton:hover {
+    background: #e04dff;
+    color: #000;
+    box-shadow: 0 0 20px #e04dff;
+}
+
+#gameCanvas {
+    background-color: #0a0a0a;
+    display: block; /* Initially hidden */
+}
+
+#instructionsScreen, #skinsScreen, #knowledgePassScreen {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#instructionsScreen h2, #skinsScreen h2, #knowledgePassScreen h2 {
+    color: #00ffde;
+    text-align: center;
+}
+
+#instructionsScreen p, #skinsScreen p, #knowledgePassScreen p {
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+#gameScreen {
+    background-image: url('../assets/images/submundo.jpg');
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#gameScreen h2, #gameScreen p {
+    color: #fff;
+    text-shadow: 0 0 5px #000, 0 0 10px #000;
+}
+
+#backToMenuButton {
+    background: rgba(224, 77, 255, 0.2);
+    border: 1px solid #e04dff;
+    color: #e04dff;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+#backToMenuButton:hover {
+    background: #e04dff;
+    color: #000;
+    box-shadow: 0 0 20px #e04dff;
+}
