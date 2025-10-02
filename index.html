@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Up Tech School RPG</title>
-    <link rel="stylesheet" href="css/styles.css?v=5">
+    <link rel="stylesheet" href="css/styles.css?v=6">
 </head>
 <body>
 
     <div id="mainMenu" class="screen active">
+        <h1>UP TECH SCHOOL RPG</h1>
         <button class="menu-button" id="playButton">Play</button>
         <button class="menu-button" id="instructionsButton">Instructions</button>
         <button class="menu-button" id="skinsButton">Skins</button>
-        <button class="menu-button" id="knowledgePassButton">Knowledge Pass</button>
+    <button class="menu-button" id="knowledgePassButton">Knowledge Pass</button>
+    <button class="menu-button" id="mapButton">Mapa</button>
+    </div>
+    <div id="storyScreen" class="screen">
+        <div id="storyContent" style="max-width:600px; text-align:center; color:#fff; font-size:1.5rem; padding:20px;"></div>
+        <button class="menu-button" id="nextStoryButton">Next</button>
+        <button class="menu-button" id="skipStoryButton">Skip</button>
     </div>
 
     <div id="instructionsScreen" class="screen">
@@ -34,11 +41,16 @@
         <button class="menu-button" id="backFromKnowledgePassButton">Back</button>
     </div>
 
+    <div id="mapScreen" class="screen">
+        <canvas id="mapCanvas"></canvas>
+        <button class="menu-button" id="backFromMapButton">Back</button>
+    </div>
+
     <div id="gameScreen" class="screen">
         <canvas id="gameCanvas"></canvas>
         <button id="backToMenuButton">Back to Menu</button>
     </div>
 
-    <script type="module" src="js/main.js"></script> 
+    <script type="module" src="js/main.js?v=3"></script> 
 </body>
 </html>
