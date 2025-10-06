@@ -1,56 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Up Tech School RPG</title>
-    <link rel="stylesheet" href="css/styles.css?v=6">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Up Tech School RPG</title>
+  <link rel="icon" href="data:,">
+  
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css?v=15">
+  <link rel="stylesheet" href="css/map-styles.css?v=2">
+  <link rel="stylesheet" href="css/map-screen.css?v=1">
 </head>
 <body>
 
-    <div id="mainMenu" class="screen active">
-        <h1>UP TECH SCHOOL RPG</h1>
-        <button class="menu-button" id="playButton">Play</button>
-        <button class="menu-button" id="instructionsButton">Instructions</button>
-        <button class="menu-button" id="skinsButton">Skins</button>
+  <div id="mainMenu" class="screen active">
+    <h1>UP TECH SCHOOL RPG</h1>
+    <button class="menu-button" id="playButton">Play</button>
+    <button class="menu-button" id="instructionsButton">Instructions</button>
+    <button class="menu-button" id="skinsButton">Skins</button>
     <button class="menu-button" id="knowledgePassButton">Knowledge Pass</button>
-    <button class="menu-button" id="mapButton">Mapa</button>
-    </div>
-    <div id="storyScreen" class="screen">
-        <div id="storyContent" style="max-width:600px; text-align:center; color:#fff; font-size:1.5rem; padding:20px;"></div>
-        <button class="menu-button" id="nextStoryButton">Next</button>
-        <button class="menu-button" id="skipStoryButton">Skip</button>
+  </div>
+
+  <div id="storyScreen" class="screen">
+    <div id="storyContent" style="max-width:600px; text-align:center; color:#fff; font-size:1.5rem; padding:20px;"></div>
+    <button class="menu-button" id="nextStoryButton">Next</button>
+    <button class="menu-button" id="skipStoryButton">Skip</button>
+  </div>
+
+  <div id="instructionsScreen" class="screen">
+    <h2>Instructions</h2>
+    <p>Use the arrow keys to move your character.</p>
+    <p>Collect all the items to win.</p>
+    <button class="menu-button" id="backFromInstructionsButton">Back</button>
+  </div>
+
+  <div id="skinsScreen" class="screen">
+    <h2>Skins</h2>
+    <p>Choose your character skin.</p>
+    <button class="menu-button" id="backFromSkinsButton">Back</button>
+  </div>
+
+  <div id="knowledgePassScreen" class="screen">
+    <h2>Knowledge Pass</h2>
+    <p>Unlock new content.</p>
+    <button class="menu-button" id="backFromKnowledgePassButton">Back</button>
+  </div>
+
+  <!-- 🔹 MAPA (canvas) -->
+  <div id="mapScreen" class="screen">
+    <canvas id="stage"></canvas>
+
+    <div class="hud">
+      <div class="title">Caminho do Conhecimento</div>
+      <div id="progressBadge" class="badge">Progresso: <b id="progressText">0/12</b> Fases</div>
+      <div class="legend">
+        <span class="dot" style="background:radial-gradient(circle at 50% 50%, var(--neon), #0ff0);"></span>
+        <span style="text-shadow:0 0 10px rgba(94,255,240,.8)">Conexões ativas</span>
+      </div>
+      <div class="menu">
+        <button class="btn" id="mapBackButton">Voltar</button>
+        <button class="btn" onclick="alert('Inventário: em construção!')">Inventário</button>
+        <button class="btn" onclick="alert('Skins: em construção!')">Skins</button>
+        <button class="btn" onclick="alert('Configurações: em construção!')">Configurações</button>
+      </div>
+      <div class="hint">Arraste para mover · Scroll/Pinch para zoom · Enter para abrir fase</div>
     </div>
 
-    <div id="instructionsScreen" class="screen">
-        <h2>Instructions</h2>
-        <p>Use the arrow keys to move your character.</p>
-        <p>Collect all the items to win.</p>
-        <button class="menu-button" id="backFromInstructionsButton">Back</button>
-    </div>
+    <div id="tip" class="tip"></div>
+  </div>
 
-    <div id="skinsScreen" class="screen">
-        <h2>Skins</h2>
-        <p>Choose your character skin.</p>
-        <button class="menu-button" id="backFromSkinsButton">Back</button>
-    </div>
+  <!-- Header com o nome da tela atual -->
+  <div id="updateTime" class="page-name"></div>
 
-    <div id="knowledgePassScreen" class="screen">
-        <h2>Knowledge Pass</h2>
-        <p>Unlock new content.</p>
-        <button class="menu-button" id="backFromKnowledgePassButton">Back</button>
-    </div>
+  <div id="gameScreen" class="screen">
+    <div id="gameFrame" style="display: none"></div>
+    <canvas id="gameCanvas" style="display: none"></canvas>
+  </div>
 
-    <div id="mapScreen" class="screen">
-        <canvas id="mapCanvas"></canvas>
-        <button class="menu-button" id="backFromMapButton">Back</button>
-    </div>
-
-    <div id="gameScreen" class="screen">
-        <canvas id="gameCanvas"></canvas>
-        <button id="backToMenuButton">Back to Menu</button>
-    </div>
-
-    <script type="module" src="js/main.js?v=3"></script> 
+  <script type="module" src="js/main.js?v=7"></script>
 </body>
 </html>

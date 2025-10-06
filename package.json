@@ -1,15 +1,19 @@
 {
   "name": "uptechschoolgame",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npx http-server . -p 8000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "phaser": "^3.90.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
   }
 }

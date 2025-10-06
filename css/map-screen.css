@@ -1,0 +1,169 @@
+/* Map Screen Layout */
+#mapScreen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000;
+}
+
+/* HUD Styles */
+.hud {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    pointer-events: none;
+}
+
+.hud .title {
+    position: absolute;
+    left: 40px;
+    top: 26px;
+    pointer-events: none;
+    font-weight: 800;
+    font-size: 32px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-shadow: 0 0 20px rgba(78,243,227,.35), 0 0 4px rgba(78,243,227,.8);
+}
+
+.hud .badge {
+    position: absolute;
+    left: 40px;
+    top: 74px;
+    font-weight: 600;
+    font-size: 14px;
+    opacity: .9;
+    background: rgba(28,60,76,.35);
+    border: 1px solid rgba(94,255,240,.35);
+    padding: 6px 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
+    pointer-events: none;
+}
+
+.hud .menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 18px;
+    display: flex;
+    gap: 14px;
+    pointer-events: auto;
+    z-index: 2001;
+}
+
+.hud .btn {
+    --g: rgba(94,255,240,.3);
+    color: #cfefff;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    font-size: 13px;
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 1px solid var(--g);
+    background: linear-gradient(180deg, rgba(94,255,240,.09), rgba(89,165,255,.06));
+    box-shadow: 0 0 0 1px rgba(94,255,240,.06) inset, 0 0 18px rgba(94,255,240,.12);
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.hud .btn:hover {
+    box-shadow: 0 0 22px rgba(94,255,240,.25), inset 0 0 0 1px rgba(94,255,240,.25);
+}
+
+/* Map Header */
+.map-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    z-index: 2000;
+}
+
+.map-title {
+    color: #00ffde;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(0, 255, 222, 0.5);
+    font-family: 'Orbitron', sans-serif;
+    pointer-events: none;
+}
+
+/* Map Container */
+.map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: block;
+    background-color: black;
+    pointer-events: none;
+}
+
+/* Navigation Bar */
+.map-nav-bar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(0, 255, 222, 0.3);
+    border-radius: 10px;
+    z-index: 2000;
+}
+
+.map-nav-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    border: none;
+    color: #00ffde;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px;
+}
+
+.map-nav-button:hover {
+    transform: translateY(-2px);
+    text-shadow: 0 0 10px #00ffde;
+}
+
+/* Control Buttons */
+.map-controls {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    display: flex;
+    gap: 12px;
+    z-index: 2000;
+}
+
+.map-controls .menu-button {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #00ffde;
+    color: #00ffde;
+    padding: 10px 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.map-controls .menu-button:hover {
+    background: #00ffde;
+    color: #000;
+    box-shadow: 0 0 10px #00ffde;
+}

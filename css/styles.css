@@ -1,152 +1,415 @@
+/* ===============================
+   Animations
+==================================*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===============================
+   Fonts
+==================================*/
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
+/* ===============================
+   CSS Base
+==================================*/
+
+.page-name {
+  position: fixed;
+  top: 20px;
+  right: 40px;
+  color: var(--neon, #4ef3e3);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  z-index: 2000;
+  text-shadow: 0 0 10px rgba(78,243,227,.5);
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #000;
+  --text: #fff;
+  --primary: #00ffde;
+  --accent: #e04dff;
+  --accent-weak: rgba(224, 77, 255, 0.2);
+  --card-bg: rgba(0,0,0,0.8);
+  --shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
+}
+
+html, body {
+  height: 100%;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #000;
-    color: #fff;
-    font-family: 'Orbitron', sans-serif;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Orbitron', sans-serif;
+  overflow: hidden; /* telas em página única */
+  width: 100vw;
+  height: 100vh;
+  position: relative;
 }
 
+/* ===============================
+   Generic Screens
+   Cada .screen ocupa a viewport inteira.
+==================================*/
 .screen {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-    overflow: hidden;
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-}
-
-#mainMenu {
-    position: relative;
-    background-image: url('../assets/images/submundo.jpg');
-    background-size: cover;
-    background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  padding: 20px;
+  text-align: center;
+  background-color: var(--bg);
+  z-index: 10;
 }
 
 .screen.active {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+/* Estilo do título principal */
+h1 {
+  color: var(--primary);
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px var(--primary);
+}
+
+/* Estilo dos botões */
+.menu-button {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 1rem 2rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  position: relative;
+  z-index: 1000;
+}
+
+.menu-button:hover {
+  background: var(--primary);
+  color: var(--bg);
+  box-shadow: var(--shadow);
+}
+}
+
+/* Map Screen Styles */
+#mapScreen {
+  position: relative;
+  padding: 0;
+}
+
+#mapScreen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/backgroundv2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  z-index: 1;
+  animation: fadeIn 1.5s ease-in;
+}
+  padding: 0;
+}
+
+#mapCanvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.9);
+}
+  padding: 20px;
+  text-align: center;
+}
+
+/* ===============================
+   Map Screen
+==================================*/
+#mapScreen {
+  background: transparent;
+  position: relative;
+  padding: 0;
+}
+
+#mapCanvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.9);
+}
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===============================
+   Main Menu
+==================================*/
+#mainMenu {
+  position: relative;
+  background-image: url('../assets/images/submundo.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 #mainMenu h1 {
-    font-size: 5rem;
-    color: #00ffde;
-    text-shadow: 0 0 10px #00ffde, 0 0 20px #00ffde, 0 0 30px #00ffde;
-    margin-bottom: 2rem;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  color: var(--primary);
+  text-shadow: var(--shadow);
+  margin: 0 0 2rem 0;
+  line-height: 1;
+  text-align: center;
 }
 
+/* ===============================
+   Buttons
+==================================*/
 .menu-button,
 #backToMenuButton {
-    background: rgba(224, 77, 255, 0.2);
-    border: 1px solid #e04dff;
-    color: #e04dff;
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    font-family: 'Orbitron', sans-serif;
-    text-align: center;
+  background: var(--accent-weak);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+  text-transform: uppercase;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  border-radius: 6px;
+  letter-spacing: 0.06em;
+  user-select: none;
 }
 
 .menu-button:hover,
 #backToMenuButton:hover {
-    background: #e04dff;
-    color: #000;
-    box-shadow: 0 0 20px #e04dff;
+  background: var(--accent);
+  color: #000;
+  box-shadow: 0 0 20px var(--accent);
+  transform: translateY(-1px);
 }
-/* Story screen background and content styling */
+
+.menu-button:active,
+#backToMenuButton:active {
+  transform: translateY(0);
+}
+
+.menu-button:focus-visible,
+#backToMenuButton:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ===============================
+   Story Screen
+==================================*/
 #storyScreen {
-    position: relative;
-    background-image: url('../assets/images/story-background.jpg');
-    background-size: cover;
-    background-position: center;
+  background-image: url('../assets/images/story-background.jpg');
+  background-size: cover;
+  background-position: center;
 }
-/* Overlay dim so background is darker but content stays bright */
-#storyScreen::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-}
-#storyScreen > #storyContent,
-#storyScreen > .menu-button {
-    position: relative;
-    z-index: 2;
-}
+
 #storyContent {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 80%;
-    color: #fff;
-    font-size: 1.2rem;
-    text-align: center;
-    margin-bottom: 20px;
+  max-width: 800px;
+  padding: 20px;
+  color: #fff;
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  text-align: center;
+  text-shadow: 0 0 5px #000, 0 0 10px #000;
+  margin: 0 20px 20px;
+}
+
+/* ===============================
+   Instructions / Skins / Knowledge Pass Cards
+==================================*/
+#instructionsScreen,
+#skinsScreen,
+#knowledgePassScreen {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 24px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+
+#instructionsScreen h2,
+#skinsScreen h2,
+#knowledgePassScreen h2 {
+  color: var(--primary);
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 12px;
+  text-shadow: 0 0 6px #000;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+#instructionsScreen p,
+#skinsScreen p,
+#knowledgePassScreen p {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 16px;
+  line-height: 1.5;
+}
+
+/* ===============================
+   Game Screen
+==================================*/
+#gameScreen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 2, 5, 0.4);
+}
+
+#gameFrame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../assets/images/game_frame.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none; /* Allows clicks to go through to the canvas */
+  z-index: 2;
 }
 
 #gameCanvas {
-    background-color: #0a0a0a;
-    display: block; /* Initially hidden */
+  width: calc(100% - 80px); /* Adjust to fit within the frame */
+  height: calc(100% - 80px); /* Adjust to fit within the frame */
+  background-color: transparent;
+  display: block;
+  position: relative;
+  z-index: 1;
 }
 
-#instructionsScreen, #skinsScreen, #knowledgePassScreen {
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-}
-
-#instructionsScreen h2, #skinsScreen h2, #knowledgePassScreen h2 {
-    color: #00ffde;
-    text-align: center;
-}
-
-#instructionsScreen p, #skinsScreen p, #knowledgePassScreen p {
-    text-align: center;
-    max-width: 600px;
-    margin-bottom: 20px;
-}
-
-#gameScreen {
-    background-image: url('../assets/images/submundo.jpg');
-    background-size: cover;
-    background-position: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-#gameScreen h2, #gameScreen p {
-    color: #fff;
-    text-shadow: 0 0 5px #000, 0 0 10px #000;
-}
-
+/* botão de voltar no game */
 #backToMenuButton {
-    background: rgba(224, 77, 255, 0.2);
-    border: 1px solid #e04dff;
-    color: #e04dff;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Orbitron', sans-serif;
-    text-transform: uppercase;
-    margin-top: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 5;
 }
 
-#backToMenuButton:hover {
-    background: #e04dff;
-    color: #000;
-    box-shadow: 0 0 20px #e04dff;
+/* ===============================
+   MAP Screen (Phaser)
+==================================*/
+#mapScreen {
+  /* caso queira um “piso” com tiles como pano de fundo */
+  background-image: url('../assets/tilesets/Tiles.png');
+  background-repeat: repeat;
+  background-size: 64px 64px;
+  image-rendering: pixelated; /* dá efeito retrô se o tileset for pequeno */
+  position: relative; /* para posicionar filhos absolutos */
+}
+
+/* Container que o Phaser usa (preencher 100% da tela) */
+#mapPhaser {
+  position: absolute;
+  inset: 0;
+  z-index: 1; /* abaixo dos botões overlay */
+}
+
+/* Se ainda existir o canvas antigo, deixe pronto para uso futuro (não esconda com !important) */
+#mapCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: none; /* mantemos off por padrão já que agora o mapa é Phaser */
+}
+
+/* Barra/controles sobre o mapa */
+#mapScreen .map-controls {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  z-index: 2;
+  display: flex;
+  gap: 12px;
+}
+
+/* ===============================
+   Utilities
+==================================*/
+.text-shadow-strong {
+  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 16px #000;
+}
+
+/* ===============================
+   Responsividade
+==================================*/
+@media (max-width: 768px) {
+  .menu-button,
+  #backToMenuButton {
+    padding: 10px 16px;
+    margin: 8px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-button,
+  #backToMenuButton {
+    width: 80%;
+    max-width: 320px;
+  }
+}
+
+/* ===============================
+   Acessibilidade / Motion
+==================================*/
+@media (prefers-reduced-motion: reduce) {
+  .menu-button,
+  #backToMenuButton {
+    transition: none;
+  }
 }
